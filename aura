@@ -74,7 +74,7 @@ function startStream(apiKey, model, systemPrompt, ongoingChat, streamFile, pidSt
     "--silent", "--no-buffer",
     "--header", "Content-Type: application/json",
     "--header", `Authorization: Bearer ${apiKey}`,
-    "--data", JSON.stringify({ model: model, messages: messages, top_p: 0.4, stream: true }),
+    "--data", JSON.stringify({ model: model, messages: messages, max_tokens: 32768, generate_window: 4096, temperature: 1.0, stop_conditions: ['<|im_end|>'], top_p: 0.4, stream: true }),
     "--output", streamFile
   ]
 
